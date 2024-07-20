@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t remedy_try -f Dockerfile.dev .
+
+script:
+  - docker run remedy_try npm run test -- --coverage
