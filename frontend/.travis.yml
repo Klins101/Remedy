@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run remedy_try npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "name_of_app"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-west-2-303875652912"
+  bucket_path: "same_as_app_name"
+  on:
+    branch: master
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key:
+  secure: "AWS_SECRET_KEY"
